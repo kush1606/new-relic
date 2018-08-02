@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become_user: root
+  tasks:
+  - name:
+    shell: echo "license_key:YOUR_LICENSE_KEY" | sudo tee -a /etc/newrelic-infra.yml
+  - name :
+    shell: curl https://download.newrelic.com/infrastructure_agent/gpg/newrelic-infra.gpg | sudo apt-key add
+  - name:
+    shell: printf "deb [arch=amd64] https://download.newrelic.com/infrastructure_agent/linux/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/newreli
+c-infra.list
+  - name:
+    apt:
+      update_cache: yes
+  - name:
+    apt:
+    name: newrelic-infra
+    state: present
