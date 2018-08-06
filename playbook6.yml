@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become_user: root
+  tasks:
+  - name:
+    shell: echo "license_key:YOUR_LICENSE_KEY" | sudo tee -a /etc/newrelic-infra.yml
+  - name:
+    shell: sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/6/x86_64/newrelic-infra.repo
+  - name:
+    shell: yum update -y
+  - name: install newrelic
+    yum:
+      name: newrelic-infra
+      state: present
