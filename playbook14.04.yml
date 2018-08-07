@@ -5,7 +5,7 @@
   - name:
     shell: echo "license_key:YOUR_LICENSE_KEY" | sudo tee -a /etc/newrelic-infra.yml
   - name :
-    shell: curl https://download.newrelic.com/infrastructure_agent/gpg/newrelic-infra.gpg | sudo apt-key add
+    shell: curl https://download.newrelic.com/infrastructure_agent/gpg/newrelic-infra.gpg | sudo apt-key add -
   - name:
     shell: printf "deb [arch=amd64] https://download.newrelic.com/infrastructure_agent/linux/apt trusty main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
   - name:
